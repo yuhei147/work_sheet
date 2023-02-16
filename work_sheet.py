@@ -189,9 +189,9 @@ else:
 
     image = Image.open('ex.png')
     st.image(image, caption='サンプル',use_column_width=True)
-    st.write("上記画像のように成型してください（縦に名前、横に日付）")
+    st.write("上記画像のように整形してください（縦に名前、横に日付）")
 
-    st.write("成型できたらアップロードしてください")
+    st.write("整形できたらアップロードしてください")
     uploaded_file=st.file_uploader("csvファイルアップロード",type=['csv'])
     if st.button('データ変換'):
         df=pd.read_csv(uploaded_file)
