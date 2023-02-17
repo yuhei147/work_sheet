@@ -258,7 +258,7 @@ else:
         df=df.replace('D6','D')
         
 
-        df.to_csv("整形後勤務表.csv", index=False,encoding='utf-8' )
+        df.to_csv("整形後勤務表.csv", index=False,encoding='utf-8')
 
         message=st.empty()
         message.write('作成中です')
@@ -270,5 +270,4 @@ else:
             data=data,
             file_name="整形後勤務表.csv"
         )
-        time.sleep(20)
         st.write("文字化けした場合はこちらを参照 [link](https://www.pc-koubou.jp/magazine/38143)")
