@@ -270,5 +270,5 @@ else:
             data=data,
             file_name="整形後勤務表.csv"
         )
-
+        time.sleep(20)
         st.write("文字化けした場合はこちらを参照 [link](https://www.pc-koubou.jp/magazine/38143)")
