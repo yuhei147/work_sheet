@@ -115,6 +115,7 @@ elif option=='タクシー配車':
         df=pd.read_csv(uploaded_file)
         df=df.loc[df['名前']==name,:]
         df=df.T
+        df.index = df.index.to_series().apply(lambda x: x.replace('名前', '0')).astype('int')
         col=df.columns.values[0]
         df=df.iloc[1:,:]
         wb = openpyxl.load_workbook('タクシー配車表（イースタン）【2022年7月から】 .xlsx')
