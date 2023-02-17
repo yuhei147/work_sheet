@@ -253,9 +253,10 @@ else:
         df=df.replace('D4','D')
         df=df.replace('D5','D')
         df=df.replace('D6','D')
+        time.sleep(15)
 
         df.to_csv("整形後勤務表.csv", index=False,encoding='utf-8' )
-        time.sleep(15)
+    
 
         data = open(f"整形後勤務表.csv", 'rb').read()
         st.download_button(
