@@ -256,11 +256,13 @@ else:
         df=df.replace('D4','D')
         df=df.replace('D5','D')
         df=df.replace('D6','D')
-        time.sleep(15)
+        
 
         df.to_csv("整形後勤務表.csv", index=False,encoding='utf-8' )
 
-        time.sleep(30)
+        message=st.empty()
+        message.write('作成中です')
+        st.success('xlsxファイルの出力が完了しました')
 
         data = open(f"整形後勤務表.csv", 'rb').read()
         st.download_button(
@@ -270,5 +272,3 @@ else:
         )
 
         st.write("文字化けした場合はこちらを参照 [link](https://www.pc-koubou.jp/magazine/38143)")
-
-
