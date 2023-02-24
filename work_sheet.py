@@ -258,7 +258,7 @@ else:
         df=df.replace('D6','D')
         
 
-        df.to_csv("整形後勤務表.csv", index=False,encoding='utf-8')
+        df.to_csv("整形後勤務表.csv", index=False,encoding='utf-8-sig')
 
         message=st.empty()
         message.write('作成中です')
