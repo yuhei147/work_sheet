@@ -10,9 +10,9 @@ import mojimoji
 
 num={'向川 有香':'10075','平尾 麗菜':'13061','松原 景一郎':'15060','田中 春希':'14004','近藤 滋義':'14012','生出 翔太':'13002','遠藤 博之':'01036','二浪 佐知子':'03048','谷澤 知恵':'07017','渡辺 康弘':'03040',
     '原田 忠広':'16071','田端 真也':'18043','鈴木 隆信':'16006','藤田 佑磨':'18011','輪違 慶太':'19008','大澤 玄太':'18086','松本 英司':'15007','小笠原 崇文':'17004','若月 大輔':'20014',
-    '吉良 智恵':'10073','佐藤 友香':'15047','大野 祐平':'16004','高橋 卓':'17011','松延 怜旺':'19005'}
-early_shift=['K','T',"k'","s'","m'",'A','AA']
-late_shift=['Q','G','H']
+    '吉良 智恵':'10073','佐藤 友香':'15047','大野 祐平':'16004','髙橋 卓':'17011','松延 怜旺':'19005'}
+early_shift=['K','T',"k'","s'","m'",'A','AA','AB']
+late_shift=['Q','G','H','GA','GB']
 holiday=['公休','有休','特別休暇','FF','RT']
     
 
@@ -110,10 +110,12 @@ elif option=='タクシー配車':
     time5= st.text_input(
         "m'勤務の配車時間を入力してください 👇",)
     time6= st.text_input(
-        "A勤務の配車時間を入力してください 👇",)
-    time7= st.text_input(
         "AA勤務の配車時間を入力してください 👇",)
-    taxi_time={'K':time1,'T':time2,"k'":time3,"s'":time4,"m'":time5,'A':time6,'AA':time7}
+    time7= st.text_input(
+        "A勤務の配車時間を入力してください 👇",)
+    time8= st.text_input(
+        "AB勤務の配車時間を入力してください 👇",)
+    taxi_time={'K':time1,'T':time2,"k'":time3,"s'":time4,"m'":time5,'AA':time6,'A':time7,'AB':time8}
 
     if st.button('タクシー配車表作成'):
         df=pd.read_csv(uploaded_file)
@@ -143,6 +145,8 @@ elif option=='タクシー配車':
             assign_shift.append('A')
         if 'AA'in data:
             assign_shift.append('AA')
+        if 'AB'in data:
+            assign_shift.append('AB')
 
         for j in range(len(assign_shift)):
             ws.cell(row=j+19,column=16).value=assign_shift[j]
@@ -207,13 +211,14 @@ else:
         df.replace({r'.*(AA).*': 'AA'}, regex=True, inplace=True)
         df=df.replace('A1','A')
         df=df.replace('A5','A')
-        df.replace({r'.*(BA).*': 'BA'}, regex=True, inplace=True)
+        df.replace({r'.*(AB).*': 'AB'}, regex=True, inplace=True)
         df=df.replace('B1','B')
         df=df.replace('B5','B')
         df.replace({r'.*(FA).*': 'FA'}, regex=True, inplace=True)
         df=df.replace('F1','F')
         df=df.replace('F5','F')
         df.replace({r'.*(GA).*': 'GA'}, regex=True, inplace=True)
+        df.replace({r'.*(GB).*': 'GB'}, regex=True, inplace=True)
         df=df.replace('G1','G')
         df=df.replace('G5','G')
         df.replace({r'.*(H).*': 'H'}, regex=True, inplace=True)
@@ -249,6 +254,7 @@ else:
         df=df.replace('／', '公休')
         df=df.replace('AL', '有休')
         df=df.replace('D・TR','D')
+        df=df.replace('D・TR6','D')
         df=df.replace('D・BT','D/BT')
         df=df.replace('D・CK','D')
         df=df.replace('特','特別休暇')
