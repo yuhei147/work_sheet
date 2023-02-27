@@ -13,7 +13,7 @@ num={'向川 有香':'10075','平尾 麗菜':'13061','松原 景一郎':'15060',
     '吉良 智恵':'10073','佐藤 友香':'15047','大野 祐平':'16004','高橋 卓':'17011','松延 怜旺':'19005'}
 early_shift=['K','T',"k'","s'","m'",'A','AA']
 late_shift=['Q','G','H']
-holiday=['公休','有給','特別休暇','FF','RT']
+holiday=['公休','有休','特別休暇','FF','RT']
     
 
 st.title('交通費精算/タクシー配車作成くん')
@@ -70,6 +70,8 @@ if option == '交通費精算':
         ws.cell(row=8,column=3).value=name
         ws.cell(row=83,column=3).value=fare
         ws.cell(row=12,column=2).value=datetime.now().month
+        num=num[name]
+        ws.cell(row=6,column=3).value=num
         wb.save(f'【{name}】通勤交通費精算書（2022.6.1.～）.xlsx')
         
         message=st.empty()
