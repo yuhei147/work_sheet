@@ -49,7 +49,7 @@ if option == '交通費精算':
         wb = openpyxl.load_workbook('【名前】通勤交通費精算書（2022.6.1.～）.xlsx')
         ws = wb['名前_10月']
 
-        for i, a in zip(range(17,77,2), data):
+        for i, a in zip(range(17,78,2), data):
             ws.unmerge_cells(f'C{i}:C{i+1}')
             ws.cell(row=i,column=3).value=a
             if a in early_shift:
@@ -63,7 +63,7 @@ if option == '交通費精算':
             else:
                 ws.cell(row=i,column=5).value=1
                 ws.cell(row=i+1,column=5).value=1
-        for i in range(17,77,2):
+        for i in range(17,78,2):
             ws.merge_cells(f'C{i}:C{i+1}')
 
         ws.cell(row=3,column=5).value=group
@@ -72,6 +72,8 @@ if option == '交通費精算':
         ws.cell(row=12,column=2).value=datetime.now().month
         num=num[name]
         ws.cell(row=6,column=3).value=num
+        month=datetime.now().month
+        ws.title = f'{name}_{month}月'
         wb.save(f'【{name}】通勤交通費精算書（2022.6.1.～）.xlsx')
         
         message=st.empty()
