@@ -253,7 +253,7 @@ else:
         df.replace({r".*(b').*": "b'"}, regex=True, inplace=True)
         df.replace({r".*(c').*": "c'"}, regex=True, inplace=True)
         df.replace({r".*(e').*": "e'"}, regex=True, inplace=True)
-        df.replace({r".*(p').*": "e'"}, regex=True, inplace=True)
+        df.replace({r".*(p').*": "p'"}, regex=True, inplace=True)
 
         df=df.replace('/', '公休')
         df=df.replace('／', '公休')
