@@ -237,7 +237,10 @@ else:
         df=df.replace('R5','R')
         df=df.replace('Q1','Q')
         df=df.replace('Q5','Q')
+        df=df.replace('P1','P')
+        df=df.replace('P5','P')
         df.replace({r'.*(S).*': 'S'}, regex=True, inplace=True)
+        
 
         df.replace({r".*(k').*": "k'"}, regex=True, inplace=True)
         df.replace({r".*(s').*": "s'"}, regex=True, inplace=True)
@@ -250,6 +253,7 @@ else:
         df.replace({r".*(b').*": "b'"}, regex=True, inplace=True)
         df.replace({r".*(c').*": "c'"}, regex=True, inplace=True)
         df.replace({r".*(e').*": "e'"}, regex=True, inplace=True)
+        df.replace({r".*(p').*": "e'"}, regex=True, inplace=True)
 
         df=df.replace('/', '公休')
         df=df.replace('／', '公休')
@@ -272,7 +276,7 @@ else:
         df=df.replace('D4','D')
         df=df.replace('D5','D')
         df=df.replace('D6','D')
-        
+        df=df.replace('D7','D')
 
         df.to_csv("整形後勤務表.csv", index=False,encoding='utf-8-sig')
 
