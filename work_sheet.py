@@ -12,8 +12,8 @@ num={'向川 有香':'10075','平尾 麗菜':'13061','松原 景一郎':'15060',
     '原田 忠広':'16071','田端 真也':'18043','鈴木 隆信':'16006','藤田 佑磨':'18011','輪違 慶太':'19008','大澤 玄太':'18086','松本 英司':'15007','小笠原 崇文':'17004','若月 大輔':'20014',
     '吉良 智恵':'10073','佐藤 友香':'15047','大野 祐平':'16004','髙橋 卓':'17011','松延 怜旺':'19005'}
 early_shift=['K','T',"k'","s'","m'",'A','AA','AB']
-late_shift=['Q','S','G','H','GA','GB']
-holiday=['公休','有休','特別休業''特別休暇','FF','RT']
+late_shift=['Q','S','G','H','GA','GB','Z']
+holiday=['公休','有休','特別休業''特別休暇','FF']
     
 
 st.title('交通費精算/タクシー配車作成くん')
@@ -259,6 +259,7 @@ else:
         df=df.replace('／', '公休')
         df=df.replace('AL', '有休')
         df=df.replace('D・TR','D')
+        df=df.replace('L・TR','L')
         df=df.replace('D・TR6','D')
         df=df.replace('D・BT','D/BT')
         df=df.replace('D・CK','D')
@@ -277,6 +278,7 @@ else:
         df=df.replace('D5','D')
         df=df.replace('D6','D')
         df=df.replace('D7','D')
+        df=df.replace('Y6','Y')
 
         df.to_csv("整形後勤務表.csv", index=False,encoding='utf-8-sig')
 
